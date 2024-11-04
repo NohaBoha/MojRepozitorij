@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+
+class Namirnica
+{
+private:
+	string imeNamirnice;
+	double kolicinaMasti;
+	double kolicinaBjelancevina;
+	double kolicinaUgljikogidrata;
+	double tipicnaPorcija;
+public:
+
+	Namirnica() : imeNamirnice("none"), kolicinaMasti(0), kolicinaBjelancevina(0), kolicinaUgljikogidrata(0), tipicnaPorcija(30)
+	{
+	}
+	Namirnica(string imeNamirnice, double kolicinaMasti, double kolicinaBjelancevina, double kolicinaUgljikogidrata, double tipicnaPorcija)
+		: imeNamirnice(imeNamirnice), kolicinaMasti(kolicinaMasti), kolicinaBjelancevina(kolicinaBjelancevina), kolicinaUgljikogidrata(kolicinaUgljikogidrata), tipicnaPorcija(tipicnaPorcija)
+	{
+	}
+	
+	void setImeNamirnice(string x) {
+		imeNamirnice = x;
+	}
+	void setKolicinaMasti(double x) {
+		kolicinaMasti = x;
+	}
+	void setKolicinaBjelancevina(double x) {
+		kolicinaBjelancevina = x;
+	}
+	void setKolicinaUgljikogidrata(double x) {
+		kolicinaUgljikogidrata = x;
+	}
+	void setTipicnaPorcija(double x) {
+		tipicnaPorcija = x;
+	}
+
+	
+	double getKolicinaMastiTipicna(double x) {
+		double kolicinaMastiTipicna = kolicinaMasti * (x / 100);
+		return kolicinaMastiTipicna;
+	}
+	double getKolicinaBjelancevinaTipicna(double x) {
+		double kolicinaBjelancevinaTipicna = kolicinaBjelancevina * (x / 100);
+		return kolicinaBjelancevinaTipicna;
+	}
+	double getKolicinaUgljikogidrataTipicna(double x) {
+		double kolicinaUgljikogidrataTipicna = kolicinaUgljikogidrata * (x / 100);
+		return kolicinaUgljikogidrataTipicna;
+	}
+
+	void ispis() {
+		cout << "------u 100 g-------" << endl;
+		cout << imeNamirnice << endl;
+		cout << kolicinaMasti << endl;
+		cout << kolicinaBjelancevina << endl;
+		cout << kolicinaUgljikogidrata << endl;
+		cout << tipicnaPorcija << endl;
+		cout << endl;
+		cout << "---tipicna porcija---" << endl;
+		cout << getKolicinaMastiTipicna(tipicnaPorcija) << endl;
+		cout << getKolicinaBjelancevinaTipicna(tipicnaPorcija) << endl;
+		cout << getKolicinaUgljikogidrataTipicna(tipicnaPorcija) << endl;
+	}
+};
+
+
+
+int main()
+{
+	Namirnica hrana;
+	string ime;
+	double mast, bjelancevina, ugljikohidrat, porcija;
+
+	cout << "Unesi Ime: ";
+	cin >> ime;
+	cout << "Unesi mast: ";
+	cin >> mast;
+	cout << "Unesi bjelancevina: ";
+	cin >> bjelancevina;
+	cout << "Unesi ugljikohidrat: ";
+	cin >> ugljikohidrat;
+	cout << "Unesi porcija: ";
+	cin >> porcija;
+
+	hrana.setImeNamirnice(ime);
+	hrana.setKolicinaMasti(mast);
+	hrana.setKolicinaBjelancevina(bjelancevina);
+	hrana.setKolicinaUgljikogidrata(ugljikohidrat);
+	hrana.setTipicnaPorcija(porcija);
+
+	cout << endl;
+	hrana.ispis();
+}
